@@ -1,0 +1,19 @@
+on: pull_request
+
+jobs:
+  test_comment_pr:
+    runs-on: ubuntu-latest
+    name: (NRT) Comment PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Comment PR
+        uses: ./
+        with:
+          message: |
+            Current branch is `${{ github.head_ref }}`.
+            _(execution **${{ github.run_id }}** / attempt **${{ github.run_attempt }}**)_
+          comment_includes: Current branch
+          reactions: eyes, rocket
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,23 @@
+name: 'Depcruise PR Check'
+branding:
+  icon: 'message-circle'
+  color: 'blue'
+description: 'Generate depcruise report in markdown format and comment to designated PR.'
+inputs:
+  GITHUB_TOKEN:
+    description: 'Github token of the repository (automatically created by Github).'
+    required: true
+  pr_number:
+    description: 'Manually define the pull request number.'
+  comment_includes:
+    description: 'The text that should be used to find comment in case of replacement.'
+    default: 'Forbidden dependency check'
+  depcruise_config:
+    description: 'Config file for depcruise.'
+    default: './dependency-cruiser.js'
+  depcruise_base_dir:
+    description: 'The baseDir for depcruise to start the operation.'
+    default: 'src'
+runs:
+  using: 'node16'
+  main: 'lib/index.js'

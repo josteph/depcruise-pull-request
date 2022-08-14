@@ -1,0 +1,40 @@
+{
+  "name": "depcruise-pr-check",
+  "version": "1.0.0",
+  "description": "GitHub action for depcruise in pull-request",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --outfile=lib/index.js --platform=node",
+    "lint": "prettier --write **/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josteph/depcruise-pr-check"
+  },
+  "keywords": [
+    "actions",
+    "depcruise",
+    "pull-request"
+  ],
+  "author": "Joshua Stephen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josteph/depcruise-pr-check/issues"
+  },
+  "homepage": "https://github.com/josteph/depcruise-pr-check#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/exec": "^1.0.0",
+    "@actions/github": "^5.0.3",
+    "@actions/io": "^1.0.0",
+    "@actions/tool-cache": "^2.0.1",
+    "dependency-cruiser": "11.14.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/node": "^18.0.6",
+    "esbuild": "0.15.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}
