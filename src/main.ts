@@ -1,7 +1,6 @@
 import * as core from '@actions/core'
 import path from 'path'
 import fs from 'fs'
-import depcruise from 'dependency-cruiser'
 
 import commentToPR from './comment'
 import { execSync } from 'child_process'
