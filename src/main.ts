@@ -27,7 +27,7 @@ function main() {
     },
   );
 
-  const output = fs.readFileSync(path.resolve(__dirname, 'depcruise-report.md'));
+  const output = fs.readFileSync('depcruise-report.md');
 
   commentToPR(output.toString());
 
