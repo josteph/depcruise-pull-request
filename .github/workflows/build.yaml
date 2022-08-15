@@ -12,15 +12,13 @@ jobs:
         uses: actions/setup-node@v3
       
       - name: Install dependencies
-        run: |
-          npm i -g pnpm@7.6.0
-          pnpm i
+        run: npm i
       
       - name: Build
-        run: pnpm run build
+        run: npm run build
       
       - name: Lint
-        run: pnpm run lint
+        run: npm run lint
       
       - name: Setup Git
         if: github.event_name == 'push' && github.ref_name == 'main'
