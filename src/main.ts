@@ -20,9 +20,12 @@ function main() {
 
   // Using depcruise.cruise API is unstable
   // Output a markdown file via CLI
-  execSync(`npx dependency-cruiser --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`, {
-    stdio: 'inherit',
-  });
+  execSync(
+    `npx dependency-cruiser --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`,
+    {
+      stdio: 'inherit',
+    },
+  );
 
   const output = fs.readFileSync(path.resolve(__dirname, 'depcruise-report.md'));
 
