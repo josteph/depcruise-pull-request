@@ -5,6 +5,8 @@ import fs from 'fs';
 import commentToPR from './comment';
 import { execSync } from 'child_process';
 
+const MARKDOWN_REPORT_FILENAME = 'depcruise-report.md';
+
 function main() {
   const depcruiseOptionsPath = core.getInput('depcruise_config');
   const depcruiseBaseDir = core.getInput('depcruise_base_dir');
@@ -21,13 +23,13 @@ function main() {
   // Using depcruise.cruise API is unstable
   // Output a markdown file via CLI
   execSync(
-    `npx dependency-cruiser --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`,
+    `npx dependency-cruiser --config ${depcruiseOptionsPath} -T markdown -f ${MARKDOWN_REPORT_FILENAME} ${depcruiseBaseDir}`,
     {
       stdio: 'inherit',
     },
   );
 
-  const output = fs.readFileSync(path.resolve(__dirname, 'depcruise-report.md'));
+  const output = fs.readFileSync(MARKDOWN_REPORT_FILENAME);
 
   commentToPR(output.toString());
 
