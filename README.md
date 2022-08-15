@@ -14,6 +14,10 @@ on: pull_request
 jobs:
   example_depcruise_pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
     name: An example job to comment depcruise report to a PR
     steps:
       - name: Checkout
@@ -51,6 +55,17 @@ You can also override the `baseDir` and depcruise config file path. The path mus
     depcruise_base_dir: 'packages/monorepo-a'
     depcruise_config: 'packages/monorepo-a/.dependency-cruiser.js'
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Permissions
+
+Minimum permissions for this GitHub action to work correctly:
+
+```yml
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
 ```
 
 ## Inputs 
