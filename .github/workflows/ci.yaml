@@ -1,9 +1,9 @@
 on: pull_request
 
 jobs:
-  test_comment_pr:
+  test_depcruise_pr:
     runs-on: ubuntu-latest
-    name: (NRT) Comment PR
+    name: (Test) Depcruise PR Check
     steps:
       - name: Checkout
         uses: actions/checkout@v1

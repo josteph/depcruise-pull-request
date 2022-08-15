@@ -5,7 +5,8 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "esbuild src/main.ts --bundle --outfile=lib/index.js --platform=node",
-    "lint": "prettier --write **/*.ts"
+    "lint": "prettier --write **/*.ts",
+    "depcruise:graph": "depcruise --config .dependency-cruiser.js -T dot src -p cli-feedback | dot -T svg | depcruise-wrap-stream-in-html > depcruise-graph.html"
   },
   "repository": {
     "type": "git",
