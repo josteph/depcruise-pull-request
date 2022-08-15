@@ -1,5 +1,5 @@
 {
-  "name": "depcruise-pr-check",
+  "name": "depcruise-pull-request",
   "version": "1.0.0",
   "description": "GitHub action for depcruise in pull-request",
   "main": "lib/main.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/josteph/depcruise-pr-check"
+    "url": "git+https://github.com/josteph/depcruise-pull-request"
   },
   "keywords": [
     "actions",
@@ -19,9 +19,9 @@
   "author": "Joshua Stephen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/josteph/depcruise-pr-check/issues"
+    "url": "https://github.com/josteph/depcruise-pull-request/issues"
   },
-  "homepage": "https://github.com/josteph/depcruise-pr-check#readme",
+  "homepage": "https://github.com/josteph/depcruise-pull-request#readme",
   "dependencies": {
     "@actions/core": "^1.9.0",
     "@actions/exec": "^1.0.0",

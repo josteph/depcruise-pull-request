@@ -1,7 +1,7 @@
 name: 'Depcruise PR Check'
 branding:
-  icon: 'message-circle'
-  color: 'blue'
+  icon: 'file-text'
+  color: 'red'
 description: 'Generate depcruise report in markdown format and comment to designated PR.'
 inputs:
   GITHUB_TOKEN:
@@ -13,11 +13,14 @@ inputs:
     description: 'The text that should be used to find comment in case of replacement.'
     default: 'Forbidden dependency check'
   depcruise_config:
-    description: 'Config file for depcruise.'
+    description: 'Path to the config file for depcruise.'
     default: './dependency-cruiser.js'
   depcruise_base_dir:
-    description: 'The baseDir for depcruise to start the operation.'
+    description: 'The baseDir for depcruise to start the scanning.'
     default: 'src'
+  status_check:
+    description: 'If there is any rules violation detected, it will exit the job with status code.'
+    default: true
 runs:
   using: 'node16'
   main: 'lib/index.js'

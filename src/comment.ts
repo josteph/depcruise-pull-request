@@ -4,15 +4,15 @@ import * as core from '@actions/core';
 async function commentToPR(message: string) {
   try {
     const context = github.context;
-    const pr_number: string = core.getInput('pr_number');
+    const prNumberFromInput: string = core.getInput('pr_number');
     const commentIncludes = core.getInput('comment_includes');
     const githubToken: string = core.getInput('GITHUB_TOKEN');
 
     const octokit = github.getOctokit(githubToken);
 
-    const pullNumber = parseInt(pr_number) || context.payload.pull_request?.number;
+    const prNumber = parseInt(prNumberFromInput) || context.payload.pull_request?.number;
 
-    if (!pullNumber) {
+    if (!prNumber) {
       core.setFailed('No pull request in input neither in current context.');
       return;
     }
@@ -21,7 +21,7 @@ async function commentToPR(message: string) {
       let comment;
       for await (const { data: comments } of octokit.paginate.iterator(octokit.rest.issues.listComments, {
         ...context.repo,
-        issue_number: pullNumber,
+        issue_number: prNumber,
       })) {
         comment = comments.find((comment) => comment?.body?.includes(commentIncludes));
         if (comment) break;
@@ -41,7 +41,7 @@ async function commentToPR(message: string) {
 
     await octokit.rest.issues.createComment({
       ...context.repo,
-      issue_number: pullNumber,
+      issue_number: prNumber,
       body: message,
     });
   } catch (error) {

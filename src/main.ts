@@ -8,6 +8,7 @@ import { execSync } from 'child_process';
 function main() {
   const depcruiseOptionsPath = core.getInput('depcruise_config');
   const depcruiseBaseDir = core.getInput('depcruise_base_dir');
+  const shouldReportStatusCheck = core.getBooleanInput('status_check');
 
   if (fs.existsSync(depcruiseOptionsPath)) {
     console.log('Config file found!');
@@ -17,18 +18,21 @@ function main() {
     );
   }
 
+  // Using depcruise.cruise API is unstable
+  // Output a markdown file via CLI
   execSync(`npx depcruise --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`, {
     stdio: 'inherit',
   });
 
   const output = fs.readFileSync(path.resolve(__dirname, 'depcruise-report.md'));
 
-  const result = output.toString();
+  commentToPR(output.toString());
 
-  if (process.env.CI) {
-    commentToPR(result);
-  } else {
-    fs.writeFileSync(path.resolve(__dirname, 'depcruise-report.md'), result);
+  // Determine job status
+  if (shouldReportStatusCheck) {
+    execSync(`npx depcruise --config ${depcruiseOptionsPath} ${depcruiseBaseDir}`, {
+      stdio: 'inherit',
+    });
   }
 }
 
