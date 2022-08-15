@@ -3,6 +3,10 @@ on: pull_request
 jobs:
   test_depcruise_pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
     name: (Test) Depcruise PR Check
     steps:
       - name: Checkout
