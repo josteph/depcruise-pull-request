@@ -20,7 +20,7 @@ function main() {
 
   // Using depcruise.cruise API is unstable
   // Output a markdown file via CLI
-  execSync(`npx depcruise --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`, {
+  execSync(`npx dependency-cruiser --config ${depcruiseOptionsPath} -T markdown -f depcruise-report.md ${depcruiseBaseDir}`, {
     stdio: 'inherit',
   });
 
@@ -30,7 +30,7 @@ function main() {
 
   // Determine job status
   if (shouldReportStatusCheck) {
-    execSync(`npx depcruise --config ${depcruiseOptionsPath} ${depcruiseBaseDir}`, {
+    execSync(`npx dependency-cruiser --config ${depcruiseOptionsPath} ${depcruiseBaseDir}`, {
       stdio: 'inherit',
     });
   }
