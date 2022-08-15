@@ -61,7 +61,7 @@ You can also override the `baseDir` and depcruise config file path. The path mus
 | --- | --- | --- | --- |
 | `GITHUB_TOKEN` | Token that is used to create comments | ✅ | |
 | `depcruise_base_dir` | The baseDir for depcruise to start the scanning | | `'src'` |
-| `depcruise_config` | Path to the config file for depcruise. | | `./dependency-cruiser.js` |
+| `depcruise_config` | Path to the config file for depcruise. | | `./.dependency-cruiser.js` |
 | `pr_number` | The number of the pull request where to create the comment | | current PR number (deduced from context) |
 | `comment_includes` | The text that should be used to find comment in case of replacement. | | `'Forbidden dependency check'` |
 | `status_check` | If there is any rules violation detected, it will exit the job with status code. | | `true` |

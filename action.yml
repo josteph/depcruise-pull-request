@@ -14,7 +14,7 @@ inputs:
     default: 'Forbidden dependency check'
   depcruise_config:
     description: 'Path to the config file for depcruise.'
-    default: './dependency-cruiser.js'
+    default: './.dependency-cruiser.js'
   depcruise_base_dir:
     description: 'The baseDir for depcruise to start the scanning.'
     default: 'src'
