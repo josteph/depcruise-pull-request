@@ -1,0 +1,31 @@
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'chore'
+  - title: '📜 Documentation'
+    labels:
+      - 'docs'
+
+autolabeler:
+  - label: 'feature'
+    title:
+      - '/^feat:/'
+  - label: 'docs'
+    title:
+      - '/^docs:/'
+  - label: 'fix'
+    title:
+      - '/^fix:/'
+  - label: 'chore'
+    title:
+      - '/^chore:/'
+
+template: |
+  ## Changes
+  $CHANGES
