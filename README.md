@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Depcruise
-        uses: josteph/depcruise-pull-request@v1
+        uses: josteph/depcruise-pull-request@v1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -37,7 +37,7 @@ That is particularly useful for manual workflow for instance (`workflow_run`).
 ```yml
 ...
 - name: Depcruise
-  uses: josteph/depcruise-pull-request@v1
+  uses: josteph/depcruise-pull-request@v1.0.0
   with:
     pr_number: 100 # This will comment on pull request #100
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,7 +50,7 @@ You can also override the `baseDir` and depcruise config file path. The path mus
 ```yml
 ...
 - name: Depcruise
-  uses: josteph/depcruise-pull-request@v1
+  uses: josteph/depcruise-pull-request@v1.0.0
   with:
     depcruise_base_dir: 'packages/monorepo-a'
     depcruise_config: 'packages/monorepo-a/.dependency-cruiser.js'
